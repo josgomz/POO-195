@@ -14,16 +14,21 @@ label.pack(pady=10)
 
 # Entrada
 entry = tk.Entry(root, font=("Arial", 20))
-entry.pack(pady=10)
+entry.pack(pady=10) 
 
 # Instancia de Backend
 backend = bk.backend()
 
-# Función para manejar el evento del botón
+# Función para manejar el evento del botón  
 def evento():
     entero = entry.get()
-    resultado = backend.CadenaCaracter(entero)
-    label1.config(text=resultado)
+    try:
+        resultado = backend.CadenaCaracter(entero)
+        label1.config(text=resultado)
+    except ValueError as e:
+        label1.config(text=str(e)+".")
+    except TypeError as e:
+        label1.config(text=str(e))
 
 # Boton
 button1 = tk.Button(root, text="Verificar",  command=evento, font=("Arial", 20))

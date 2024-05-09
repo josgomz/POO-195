@@ -1,9 +1,12 @@
 class backend:
     def CadenaCaracter(self, dato):
-        index = dato
-        nombres = ["Leo", "Aldo", "Luis", "Parra"]
+        print(dato)
+        nombres = ["Leo", "Aldo", "Luis", "Parra", "Fernando", "Adrian", "Pedro", "Marcos"]
         try:
-            return nombres[index]
+            index = int(dato)
+            if index < 0 or index >= len(nombres):
+                return ValueError("El número debe ser mayor o igual a 0 y menor a " + str(len(nombres)) + ".")
+            else:
+                return nombres[index]
         except ValueError:
-            dato = ValueError
-            return dato
+            return nombres[dato], ValueError
